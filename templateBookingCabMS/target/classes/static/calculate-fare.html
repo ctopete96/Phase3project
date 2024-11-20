@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Fare</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+            width: 70%; /* Set width to 70% for a smaller box */
+            height: 30px; /* Decrease height */
+            font-size: 16px; /* Keep font size the same */
+            padding: 5px; /* Add padding for better appearance */
+            box-sizing: border-box; /* Include padding in width */
+        }
+        #fare-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555; /* Slightly lighter color for the note */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculate Fare</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="book-cab.html">Book a Cab</a></li>
+                <li><a href="calculate-fare.html">Calculate Fare</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="fare-form">
+            <label for="distance">Distance (miles):</label>
+            <input type="number" id="distance" required>
+            <button type="submit">Calculate Fare</button>
+            <div class="note">Note: The rate is $5 per mile.</div>
+        </form>
+        <div id="fare-result"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Our Taxi Company</p>
+    </footer>
+
+    <script>
+        const ratePerMile = 5; // Fixed rate per mile
+
+        document.getElementById('fare-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const distance = parseFloat(document.getElementById('distance').value);
+            const fare = distance * ratePerMile; // Calculate fare
+
+            // Display the total fare in the result div
+            document.getElementById('fare-result').innerText = `Total Fare: $${fare.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>
